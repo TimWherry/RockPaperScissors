@@ -6,6 +6,10 @@
 //
 //---------------------------------------
 
+
+const NUMBER_OF_ROUNDS = 5
+
+
 function playRound(playerSelection, computerSelection) {
     let roundResult = NaN
     if(playerSelection == "rock")
@@ -89,13 +93,45 @@ function translatePlayerChoiceToGameOptions(playerSelection)
 function playGame()
 {
     const playerSelection = prompt("Rock, paper, or scissors?")
+    if(playerSelection === null)
+    {
+        console.error("There was a problem with the player's selection.")
+        return null
+    }
     playerSelection = translatePlayerChoiceToGameOptions(playerSelection)
 
     const computerSelection = getComputerChoice();
 
-    const playerWon = playRound(playerSelection, computerSelection);
+    const gameResult = playRound(playerSelection, computerSelection);
+    if(gameResult === NaN)
+    {
+        console.error("There was a problem with the results.")
+        return NaN
+    }
+    return 
 }
-   
-//const playerSelection = "rock";
-//const computerSelection = getComputerChoice();
-//console.log(playRound(playerSelection, computerSelection));
+
+
+let playerWins = 0
+let ties = 0
+
+for(let i = 0; i < NUMBER_OF_ROUNDS; ++i)
+{
+    let results = playGame()
+    if( !(results === null || results === NaN))
+    {
+        if(results > 0)
+        {
+            playerWins++
+        }
+        else if(results === 0)
+        {
+            ties++
+        }
+    }
+}
+let computerWins = NUMBER_OF_ROUNDS - playerWins - ties
+
+console.log("The player won " + playerWins + " times!")
+console.log("There were " + ties + " ties.")
+console.log("The computer won " + computerWins + "times...")
