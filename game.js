@@ -92,7 +92,7 @@ function translatePlayerChoiceToGameOptions(playerSelection)
 
 function playGame()
 {
-    const playerSelection = prompt("Rock, paper, or scissors?")
+    let playerSelection = prompt("Rock, paper, or scissors?")
     if(playerSelection === null)
     {
         console.error("There was a problem with the player's selection.")
@@ -101,6 +101,7 @@ function playGame()
     playerSelection = translatePlayerChoiceToGameOptions(playerSelection)
 
     const computerSelection = getComputerChoice();
+    console.log(computerSelection + " vs " + playerSelection)
 
     const gameResult = playRound(playerSelection, computerSelection);
     if(gameResult === NaN)
@@ -108,7 +109,20 @@ function playGame()
         console.error("There was a problem with the results.")
         return NaN
     }
-    return 
+    console.log(gameResult)
+    if(gameResult > 0)
+    {
+        console.log("Player Won")
+    }
+    else if(gameResult === 0)
+    {
+        console.log("It's a tie")
+    }
+    else 
+    {
+        console.log("Computer Won")
+    }
+    return gameResult
 }
 
 
@@ -134,4 +148,4 @@ let computerWins = NUMBER_OF_ROUNDS - playerWins - ties
 
 console.log("The player won " + playerWins + " times!")
 console.log("There were " + ties + " ties.")
-console.log("The computer won " + computerWins + "times...")
+console.log("The computer won " + computerWins + " times...")
