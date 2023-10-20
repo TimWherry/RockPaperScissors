@@ -92,60 +92,65 @@ function translatePlayerChoiceToGameOptions(playerSelection)
 
 function playGame()
 {
-    let playerSelection = prompt("Rock, paper, or scissors?")
-    if(playerSelection === null)
-    {
-        console.error("There was a problem with the player's selection.")
-        return null
-    }
-    playerSelection = translatePlayerChoiceToGameOptions(playerSelection)
+    // let playerSelection = prompt("Rock, paper, or scissors?")
+    // if(playerSelection === null)
+    // {
+    //     console.error("There was a problem with the player's selection.")
+    //     return null
+    // }
+    // playerSelection = translatePlayerChoiceToGameOptions(playerSelection)
 
+    // const computerSelection = getComputerChoice();
+    // console.log(computerSelection + " vs " + playerSelection)
+
+    // const gameResult = playRound(playerSelection, computerSelection);
+    // if(gameResult === NaN)
+    // {
+    //     console.error("There was a problem with the results.")
+    //     return NaN
+    // }
+    // console.log(gameResult)
+    // if(gameResult > 0)
+    // {
+    //     console.log("Player Won")
+    // }
+    // else if(gameResult === 0)
+    // {
+    //     console.log("It's a tie")
+    // }
+    // else 
+    // {
+    //     console.log("Computer Won")
+    // }
+    // return gameResult
+}
+
+let playerWins = 0;
+let roundTies = 0;
+let computerWins = 0;
+
+function playerChoice(button) {
+    playerSelection = translatePlayerChoiceToGameOptions(button.textContent);
     const computerSelection = getComputerChoice();
-    console.log(computerSelection + " vs " + playerSelection)
-
+    console.log(computerSelection + " vs " + playerSelection);
     const gameResult = playRound(playerSelection, computerSelection);
-    if(gameResult === NaN)
-    {
-        console.error("There was a problem with the results.")
-        return NaN
-    }
-    console.log(gameResult)
     if(gameResult > 0)
     {
-        console.log("Player Won")
+        playerWins++;
+        document.querySelector("#round").textContent = "Player Won: " + playerSelection + " against " + computerSelection + ".";
     }
-    else if(gameResult === 0)
+    else if(gameResult < 0) 
     {
-        console.log("It's a tie")
+        computerWins++;
+        document.querySelector("#round").textContent = "Computer Won: " + computerSelection + " against " + playerSelection + ".";
     }
-    else 
+    else
     {
-        console.log("Computer Won")
-    }
-    return gameResult
-}
-
-
-let playerWins = 0
-let ties = 0
-
-for(let i = 0; i < NUMBER_OF_ROUNDS; ++i)
-{
-    let results = playGame()
-    if( !(results === null || results === NaN))
-    {
-        if(results > 0)
-        {
-            playerWins++
-        }
-        else if(results === 0)
-        {
-            ties++
-        }
+        roundTies++;
+        document.querySelector("#round").textContent = "It's a tie!";
     }
 }
-let computerWins = NUMBER_OF_ROUNDS - playerWins - ties
 
 console.log("The player won " + playerWins + " times!")
-console.log("There were " + ties + " ties.")
+console.log("There were " + roundTies + " ties.")
 console.log("The computer won " + computerWins + " times...")
