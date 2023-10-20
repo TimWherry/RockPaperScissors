@@ -90,41 +90,6 @@ function translatePlayerChoiceToGameOptions(playerSelection)
     return null
 }
 
-function playGame()
-{
-    // let playerSelection = prompt("Rock, paper, or scissors?")
-    // if(playerSelection === null)
-    // {
-    //     console.error("There was a problem with the player's selection.")
-    //     return null
-    // }
-    // playerSelection = translatePlayerChoiceToGameOptions(playerSelection)
-
-    // const computerSelection = getComputerChoice();
-    // console.log(computerSelection + " vs " + playerSelection)
-
-    // const gameResult = playRound(playerSelection, computerSelection);
-    // if(gameResult === NaN)
-    // {
-    //     console.error("There was a problem with the results.")
-    //     return NaN
-    // }
-    // console.log(gameResult)
-    // if(gameResult > 0)
-    // {
-    //     console.log("Player Won")
-    // }
-    // else if(gameResult === 0)
-    // {
-    //     console.log("It's a tie")
-    // }
-    // else 
-    // {
-    //     console.log("Computer Won")
-    // }
-    // return gameResult
-}
-
 let playerWins = 0;
 let roundTies = 0;
 let computerWins = 0;
