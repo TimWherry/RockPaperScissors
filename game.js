@@ -7,7 +7,7 @@
 //---------------------------------------
 
 
-const NUMBER_OF_ROUNDS = 5
+const NUMBER_OF_WINS = 5
 
 
 function playRound(playerSelection, computerSelection) {
@@ -148,6 +148,31 @@ function playerChoice(button) {
     {
         roundTies++;
         document.querySelector("#round").textContent = "It's a tie!";
+    }
+
+    const scoreTexts = document.querySelectorAll(".score");
+    scoreTexts[0].innerHTML = "Player Score: " + playerWins + ".";
+    scoreTexts[1].innerHTML = "Ties: " + roundTies + ".";
+    scoreTexts[2].innerHTML = "Computer Score: " + computerWins + ".";
+
+    if(playerWins >= NUMBER_OF_WINS)
+    {
+        clearScoreTexts();
+        scoreTexts[0].innerHTML = "PLAYER HAS WON!!!!";
+    }
+    else if(computerWins >= NUMBER_OF_WINS)
+    {
+        clearScoreTexts();
+        scoreTexts[0].innerHTML = "Computer has won...";
+    }
+}
+
+function clearScoreTexts()
+{
+    const scoreTexts = document.querySelectorAll(".score");
+    for (const scoreText of scoreTexts) 
+    {
+        scoreText.innerHTML = "";
     }
 }
 
