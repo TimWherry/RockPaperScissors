@@ -1,0 +1,32 @@
+.player-selection {
+    color: white;
+    background-color: darkslategrey;
+    padding: 15px;
+    min-width: 100px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+#button-holder {
+    display: flex;
+    justify-content: space-evenly;
+    width: 400px;
+}
+
+#results > p {
+    font-size: 25px;
+
+}
+
+#results{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 400px;
+}
